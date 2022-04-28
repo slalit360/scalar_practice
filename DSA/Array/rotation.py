@@ -1,42 +1,9 @@
-import math
-import functools
-from time import time
+from DSA.Array.reverse import reverse
+from time_utility import timeit
 
-
-def timeit(func):
-    @functools.wraps(func)
-    def wrap_func(*args, **kwargs):
-        t1 = time()
-        result = func(*args, **kwargs)
-        t2 = time()
-        print(f'Function {func.__name__!r} executed in {(t2 - t1):.8f}s')
-        return result
-    return wrap_func
-
-
-def reverse(arr, s, e):
-    i = s
-    j = e
-    while i < j:
-        arr[i], arr[j] = arr[j], arr[i]
-        i += 1
-        j -= 1
-    return arr
-
-
-def second_largest(arr):
-    if len(arr) < 2:
-        return -1
-    max1 = max2 = -math.inf
-    for i in arr:
-        if i > max1:
-            max2 = max1
-            max1 = i
-        elif max2 < i < max1:
-            max2 = i
-    if max2 == -math.inf:
-        max2 = max1
-    return max2
+"""
+Rotate array k time either on left or right 
+"""
 
 
 @timeit
