@@ -1,4 +1,4 @@
-from DSA.Array.reverse import reverse
+from DSA.Array.class_1.reverse import reverse
 from time_utility import timeit
 
 """
