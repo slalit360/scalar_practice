@@ -3,22 +3,13 @@ def reverse(A):
     if A == 0:
         return 0
 
-    bits = ''
-    count = 0
-    num = A
-
     result = 0
-    n = 32
+    n = 31
 
-    while num > 0:
-        tmp = num % 2
-        bits += str(tmp) # reverse store
-        num = num // 2
-        count += 1
-
-    for i in range(count):
-        if bits[i] == '1':
-            result += 2 ** (n - 1)
+    while A > 0:
+        if A % 2 == 1: # reverse store
+            result += 2 ** (n)
+        A = A // 2
         n -= 1
 
     return result
