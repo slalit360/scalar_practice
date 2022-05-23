@@ -34,6 +34,7 @@ def maximumSumSubarray(K, Arr, N):
 
     return maxn
 
+
 if __name__ == '__main__':
     A = [100, 200, 300, 400]
     K = 2

@@ -40,6 +40,15 @@ def approach2(A, n, q):
 # approach2(A, n, q)
 # approach1(A, n, q)
 
+
+"""
+ou are given an integer array A of length N.
+You are also given a 2D integer array B with dimensions M x 2, where each row denotes a [L, R] query.
+For each query, you have to find the sum of all elements from L to R indices in A (1 - indexed).
+More formally, find A[L] + A[L + 1] + A[L + 2] +... + A[R - 1] + A[R] for each query.
+"""
+
+
 def rangeSum(A, B):
     n = len(A)
     ps = [0] * n
@@ -61,4 +70,5 @@ def rangeSum(A, B):
     return op
 
 
-print(rangeSum(A=[1, 2, 3, 4, 5], B=[[1, 4], [2, 3]]))
+if __name__ == '__main__':
+    print(rangeSum(A=[1, 2, 3, 4, 5], B=[[1, 4], [2, 3]]))

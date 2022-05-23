@@ -6,18 +6,21 @@ def get_special_index_count(A):
     PSE = [0] * n
 
     PSE[0] = A[0]
+    PSO[0] = 0
     for i in range(1, n):
         if i % 2 == 0:
             PSE[i] = PSE[i - 1] + A[i]
+            PSO[i] = PSO[i - 1]
         else:
             PSE[i] = PSE[i - 1]
-
-    PSO[0] = 0
-    for i in range(1, n):
-        if i % 2 == 1:
             PSO[i] = PSO[i - 1] + A[i]
-        else:
-            PSO[i] = PSO[i - 1]
+
+    # PSO[0] = 0
+    # for i in range(1, n):
+    #     if i % 2 == 1:
+    #         PSO[i] = PSO[i - 1] + A[i]
+    #     else:
+    #         PSO[i] = PSO[i - 1]
 
     count_indices = 0
     for i in range(0, n):
