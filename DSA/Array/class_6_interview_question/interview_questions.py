@@ -124,7 +124,7 @@ def return_max_subarray(A):
 def smallestNumber(num: int) -> int:
     num = list(str(num))
     num.sort()
-
+    tmp = None
     for i, n in enumerate(num):
         if n != '0':
             tmp = num.pop(i)

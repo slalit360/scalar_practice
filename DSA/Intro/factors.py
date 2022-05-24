@@ -39,6 +39,6 @@ def print_factors_new(x):
 
 if __name__ == '__main__':
     print(get_factors_divide_by_2(7))
-    A = 21
+    A = 4
     print(print_factors(A))
     print(sorted(print_factors_new(A)))
