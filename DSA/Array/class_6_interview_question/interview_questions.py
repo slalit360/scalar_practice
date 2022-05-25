@@ -5,8 +5,7 @@ def consecutive_1s_count(A):
     """
     Given a binary string A. It is allowed to do at most one swap between any 0 and 1.
     Find and return the length of the longest consecutive 1’s that can be achieved.
-    :param A:
-    :return:
+    # TC seems like O(n^2) but it is O(n) as every element is accessed max three times.
     """
     n = len(A)
     ans = 0
@@ -15,16 +14,19 @@ def consecutive_1s_count(A):
     for i in range(n):
         if A[i] == '1':
             count_of_1 += 1
-
+    flag = False
     for i in range(n):
-        print(A[i])
+        # print(A[i])
         if A[i] == '0':
-            l = 0
-            for j in range(i - 1, -1, -1):
-                if A[j] == '1':
-                    l += 1
-                else:
-                    break
+            if not flag:
+                l = 0
+                for j in range(i - 1, -1, -1):
+                    if A[j] == '1':
+                        l += 1
+                    else:
+                        break
+            else:
+                l = r
             r = 0
             for j in range(i + 1, n):
                 if A[j] == '1':
@@ -158,15 +160,18 @@ def specialXor(N, Q, a, query):
 
 if __name__ == '__main__':
 
-    print(smallestNumber(1234))
-    A = "01"
+    # print(smallestNumber(1234))
+    A = "111011101"
     print(consecutive_1s_count(A))
 
-    print_diamond(n=4)
+    # print_diamond(n=4)
 
-    print(return_max_subarray([1, 2, 3, -1, 4, 5]))
+    # print(return_max_subarray([1, 2, 3, -1, 4, 5]))
 
-    print(return_max_subarray(
-        [8986143, -5026827, 5591744, 4058312, 2210051, 5680315, -5251946, -607433, 1633303, 2186575]
-        )
-    )
+    # print(return_max_subarray(
+    #     [8986143, -5026827, 5591744, 4058312, 2210051, 5680315, -5251946, -607433, 1633303, 2186575]
+    #     )
+    # )
+
+
+"".split()

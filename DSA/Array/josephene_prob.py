@@ -8,11 +8,12 @@ Given the total number of persons n and a number k which indicates that k-1 pers
 The task is to choose the place in the initial circle so that you are the last one remaining and so survive.
 """
 
-
 # steps
 # 1. unset the MSB bit (t)
 # 2. return 2t+1
 import math
+
+from DSA.Bit.class_2_bit_2.basic import check_bit_set
 
 
 def get_alive_position_1(N):
@@ -25,13 +26,25 @@ def get_alive_position_1(N):
     return 2 * t + 1
 
 
-def get_alive_position_2(n, d=1):
+def get_alive_position_2(N, d=1):
     # 1. generate bits
     # 2. rotate right once
-    pass
+
+    # count = 0
+    # for i in range(int(math.log2(N))+1):
+    #     if check_bit_set(N, i):
+    #         count += 1
+
+    count = int(math.log2(N)) + 1
+
+    # N = N ^ (1 << count - 1)  # toggle MSB
+    N = N & ~(1 << count - 1)   # unset MSB
+
+    return (N << 1) | (1 << 0)  # set LSB
 
 
 if __name__ == '__main__':
     for i in range(1, 20):
         print(i, get_alive_position_1(i))
         print(i, get_alive_position_2(i))
+        print('-' * 5)
