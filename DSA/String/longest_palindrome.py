@@ -53,7 +53,7 @@ def max_size_palindrome(A):
             if A[p1] == A[p2]:
                 if p2 - p1 + 1 > max_length:
                     ans = A[p1:p2 + 1]
-                max_length = max(max_length, p2 - p1 + 1)
+                    max_length = p2 - p1 + 1
                 p1 -= 1
                 p2 += 1
             else:
@@ -65,7 +65,7 @@ def max_size_palindrome(A):
             if A[p1] == A[p2]:
                 if p2 - p1 + 1 > max_length:
                     ans = A[p1:p2 + 1]
-                max_length = max(max_length, p2 - p1 + 1)
+                    max_length = p2 - p1 + 1
                 p1 -= 1
                 p2 += 1
             else:
