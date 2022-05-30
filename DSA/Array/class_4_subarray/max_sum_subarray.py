@@ -8,7 +8,10 @@ Problem Description
 import math
 
 
-def maxSubArray(A):
+def maxSubArray_1(A):
+    # with prefix sum way
+    # TC : O(n^2)
+    # SC : O(N)
     n = len(A)
     summ = -math.inf
 
@@ -28,7 +31,25 @@ def maxSubArray(A):
     return summ
 
 
+def maxSubArray(A):
+    # with carry forward way
+    # TC : O(n^2)
+    # SC : O(1)
+    n = len(A)
+    ans_sum = -math.inf
+
+    for i in range(n):
+        tmp_sum = 0
+        for j in range(i, n):
+            tmp_sum += A[j]
+            ans_sum = max(ans_sum, tmp_sum)
+    return ans_sum
+
+
 def maxSubArray_optimized(A):
+    # kadane's algorithm
+    # TC : O(N)
+    # SC : O(1)
     n = len(A)
 
     curr_sum = A[0]
@@ -37,13 +58,21 @@ def maxSubArray_optimized(A):
     for i in range(1, n):
         curr_sum = max(A[i], curr_sum + A[i])
         max_sum = max(max_sum, curr_sum)
-
+        if curr_sum < 0:
+            curr_sum = 0
     return max_sum
 
 
 if __name__ == '__main__':
     # A = [1, 2, 3, 4, -10]
+    print(maxSubArray([2, 9, 5]))
     print(maxSubArray_optimized([2, 9, 5]))
+
+    print(maxSubArray([1, 2, 3, 4, -10]))
     print(maxSubArray_optimized([1, 2, 3, 4, -10]))
+
+    print(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
     print(maxSubArray_optimized([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+
+    print(maxSubArray([-10, -10, -10, -10, -10]))
     print(maxSubArray_optimized([-10, -10, -10, -10, -10]))
