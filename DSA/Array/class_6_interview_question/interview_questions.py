@@ -95,34 +95,6 @@ def print_diamond(n):
         print(t + s + t)
 
 
-def return_max_subarray(A):
-    """
-    Given an array of integers A, of size N.
-
-    Return the maximum size subarray of A having only non-negative elements. If there are more than one such subarray,
-    return the one having the smallest starting index in A.
-    NOTE: It is guaranteed that an answer always exists.
-
-    :param A:
-    :return:
-    """
-    N = len(A)
-    maximum = 0
-    start_index = 0
-    count = 0
-    for k in range(N):
-        if A[k] > 0:
-            if count == 0:
-                i = k  # note the starting point of each positive subarray
-            count += 1
-        if A[k] < 0 or (k == N - 1):
-            if count > maximum:
-                start_index = i  # this will be the starting point of the answer
-                maximum = count
-            count = 0
-    return A[start_index:start_index + maximum]
-
-
 def smallestNumber(num: int) -> int:
     num = list(str(num))
     num.sort()
@@ -159,19 +131,7 @@ def specialXor(N, Q, a, query):
 
 
 if __name__ == '__main__':
-
-    # print(smallestNumber(1234))
+    print(smallestNumber(1234))
     A = "111011101"
     print(consecutive_1s_count(A))
-
-    # print_diamond(n=4)
-
-    # print(return_max_subarray([1, 2, 3, -1, 4, 5]))
-
-    # print(return_max_subarray(
-    #     [8986143, -5026827, 5591744, 4058312, 2210051, 5680315, -5251946, -607433, 1633303, 2186575]
-    #     )
-    # )
-
-
-"".split()
+    print_diamond(n=4)
