@@ -80,6 +80,29 @@ def check_zero_sum_sub_array_hashing(A, K=0):
     return False
 
 
+def get_sub_array_with_sum_B(A, B):
+    # Given an array of positive integers A and an integer B, find and return first continuous subarray which adds to B.
+    # TC : O(N)
+    # SC : O(N)
+    n = len(A)
+
+    hashmap = dict()
+    ps = [A[0]]
+
+    for i in range(1, n):
+        ps.append(ps[i - 1] + A[i])
+
+    for i in range(n):
+        if ps[i] == B:
+            return A[0:i + 1]
+        if ps[i] - B in hashmap:
+            return A[hashmap[ps[i] - B] + 1: i + 1]
+        else:
+            hashmap[ps[i]] = i
+
+    return [-1]
+
+
 def check_zero_sum_sub_array_hashing2(A):
     # TC : O(N)
     # SC : O(1)
@@ -105,3 +128,5 @@ if __name__ == '__main__':
     # print("---- K : 0 ----")
 
     # print(check_zero_sum_sub_array_hashing2(A), "\n")  # only checks for sum zero
+    print(get_sub_array_with_sum_B(A=[1, 2, 3, 4, 5], B=5))
+    print(get_sub_array_with_sum_B(A=[5, 10, 20, 100, 105], B=110))

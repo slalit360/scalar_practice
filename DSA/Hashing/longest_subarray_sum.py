@@ -120,7 +120,7 @@ def longest_zero_sum_sub_array_hashing(A):
 
 
 # covers all sub array like carry forward os prefix sum approach
-def longest_zero_sum_sub_array_hashmap_new(A):
+def longest_zero_sum_sub_array_hashmap_new(A, K):
     # hashing way :
     # TC : O(N)
     # SC : O(N)
@@ -131,7 +131,7 @@ def longest_zero_sum_sub_array_hashmap_new(A):
     for i in range(n):
         summ += A[i]
 
-        if summ == 0:
+        if summ == K:
             if max_l < i - 0 + 1:
                 max_l = i - 0 + 1
                 s = 0
@@ -161,9 +161,9 @@ if __name__ == '__main__':
         print(f"---- K : {K} ------")
         # print(longest_sub_array_sum_naive(A, K), "")
         # print(longest_sub_array_sum_prefix_sum(A, K), "")
-        print(longest_sub_array_sum_carry_forward(A, K), "\n")
+        #print(longest_sub_array_sum_carry_forward(A, K), "\n")
 
     # print("---- K : 0 ----")
     print(longest_zero_sum_sub_array_hashing(A), "\n")      # only checks for sum zero
     # print(longest_zero_sum_sub_array_hashing2(A), "\n")     # only checks for sum zero
-    print(longest_zero_sum_sub_array_hashmap_new(A))        # only checks for sum zero
+    print(longest_zero_sum_sub_array_hashmap_new(A, K=0))        # only checks for sum zero
