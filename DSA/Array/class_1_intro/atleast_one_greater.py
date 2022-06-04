@@ -1,6 +1,3 @@
-from collections import Counter
-
-
 def get_count(A):
     """
     given an array of size n, find count of elements having one or more elements greater than itself.

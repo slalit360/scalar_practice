@@ -2,7 +2,7 @@
 from time_utility import timeit
 
 
-@timeit
+@timeit(repeat=1)
 def reverse(arr, start, end):
     # optimized way -> (start+end)/2 iterations -> n/2 iteration -> O(n)
     while start < end:
@@ -12,7 +12,7 @@ def reverse(arr, start, end):
     return arr
 
 
-@timeit
+@timeit(repeat=1)
 def reverse_builtin(arr, start, end):
     return arr[::-1]
 

@@ -9,7 +9,7 @@ def get_majority_element_1(A):
     # with hashmap
     n = len(A)
     ans = 0
-    d = dict()
+    d = {}
     for i in A:
         if i not in d:
             d[i] = 1
@@ -55,4 +55,4 @@ def get_majority_element(A):
 
 
 if __name__ == '__main__':
-    print(get_majority_element())
+    print(get_majority_element([1, 2, 2, 3, 5, 2, 2]))

@@ -15,7 +15,7 @@ O = 20
 """
 
 
-def findMod(self, A, B):
+def findMod(A, B):
     # return int(A) % B
 
     ans = 0

@@ -105,7 +105,7 @@ def get_sub_array_with_sum_B(A, B):
 
 def check_zero_sum_sub_array_hashing2(A):
     # TC : O(N)
-    # SC : O(1)
+    # SC : O(N)
     d = set()
     curr_sum = 0
     for x in A:

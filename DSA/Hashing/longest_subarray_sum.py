@@ -21,7 +21,7 @@ def longest_sub_array_sum_naive(A, K):
                 if j - i + 1 > max_l:
                     max_l = j - i + 1
                     s = i
-                    e = j+1
+                    e = j + 1
                 # print(i, j, j - i + 1, " -> ", A[i:j+1])
     if max_l == 0:
         return []
@@ -72,8 +72,8 @@ def longest_sub_array_sum_carry_forward(A, K):
                 if j - i + 1 > max_l:
                     max_l = j - i + 1
                     s = i
-                    e = j+1
-                print(i, j, j - i + 1, " -> ", A[i:j+1])
+                    e = j + 1
+                print(i, j, j - i + 1, " -> ", A[i:j + 1])
     if max_l == 0:
         return []
     return A[s:e]
@@ -99,20 +99,20 @@ def longest_zero_sum_sub_array_hashing(A):
     for i in range(n):
         if ps[i] == 0:
             j = 0
-            print(j, i, i+1-j, " -> ", A[j:i+1])
+            # print(j, i, i + 1 - j, " -> ", A[j:i + 1])
             if i - j + 1 > max_l:
                 max_l = i - j + 1
                 s = 0
-                e = i+1
+                e = i + 1
         if ps[i] not in hashmap:
             hashmap[ps[i]] = i
         else:
             j = hashmap[ps[i]]
             if i - j + 1 > max_l:
                 max_l = i - j + 1
-                s = j+1
-                e = i+1
-            print(j+1, i, i-(j+1)+1, " -> ", A[j+1:i+1])
+                s = j + 1
+                e = i + 1
+            # print(j + 1, i, i - (j + 1) + 1, " -> ", A[j + 1:i + 1])
     if max_l == 0:
         return []
 
@@ -136,7 +136,7 @@ def longest_zero_sum_sub_array_hashmap_new(A, K):
                 max_l = i - 0 + 1
                 s = 0
                 e = i + 1
-            print(0, i, i-0+1, " -> ", A[0:i+1])
+            # print(0, i, i - 0 + 1, " -> ", A[0:i + 1])
 
         al = []
         if summ in hashmap:
@@ -147,23 +147,42 @@ def longest_zero_sum_sub_array_hashmap_new(A, K):
                     max_l = i - j + 1
                     s = j
                     e = i + 1
-                print(j+1, i,  i-j, " -> ", A[j+1:i+1])
+                # print(j + 1, i, i - j, " -> ", A[j + 1:i + 1])
         al.append(i)
         hashmap[summ] = al
 
     return A[s:e]
 
 
+def longest_subarray_sum_zero_hash_carry(A):
+    # TC : O(N)
+    # SC : O(N)
+    maxlcs, j, k = 0, -1, -1
+    d = {0: -1} # initial sum with index
+    summ = 0
+    for i in range(len(A)):
+        summ += A[i]
+        if summ in d:
+            if maxlcs < i - d[summ]:
+                maxlcs = i - d[summ]
+                j = d[summ] + 1
+                k = i
+        else:
+            d[summ] = i
+    return A[j: k + 1] if maxlcs else []
+
+
 if __name__ == '__main__':
-    A = [0, 2, 3, -5, 1, -1, 1, 0] # + [4, 3, 2, -2, -3, 5, -3, 1, 2, 0]
+    A = [0, 2, 3, -5, 1, -1, 1, 0]  # + [4, 3, 2, -2, -3, 5, -3, 1, 2, 0]
     print(A, "\n")
     for K in [0]:  # , 1, 2, 3, 4, 5]:
         print(f"---- K : {K} ------")
         # print(longest_sub_array_sum_naive(A, K), "")
         # print(longest_sub_array_sum_prefix_sum(A, K), "")
-        #print(longest_sub_array_sum_carry_forward(A, K), "\n")
+        # print(longest_sub_array_sum_carry_forward(A, K), "\n")
 
     # print("---- K : 0 ----")
-    print(longest_zero_sum_sub_array_hashing(A), "\n")      # only checks for sum zero
+    print(longest_zero_sum_sub_array_hashing(A), "\n")  # only checks for sum zero
     # print(longest_zero_sum_sub_array_hashing2(A), "\n")     # only checks for sum zero
-    print(longest_zero_sum_sub_array_hashmap_new(A, K=0))        # only checks for sum zero
+    print(longest_zero_sum_sub_array_hashmap_new(A, K=0), "\n")  # only checks for sum zero
+    print(longest_subarray_sum_zero_hash_carry(A))

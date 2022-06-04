@@ -46,6 +46,20 @@ def is_prime_3(n):
         print(f"{n} is not prime number")
 
 
+def prime_list(N):
+    prime_list = []
+    for i in range(N):
+        if i == 0 or i == 1:
+            continue
+        else:
+            for j in range(2, int(i ** 0.5) + 1):
+                if i % j == 0:
+                    break
+            else:
+                prime_list.append(i)
+    return prime_list
+
+
 if __name__ == '__main__':
     is_prime_1(11)
     is_prime_2(11)
