@@ -20,6 +20,14 @@ def pow(a, n):
         return res
 
 
+def main_power(a, n):
+    if n < 0:
+        return 1 / pow(a, -n)
+    else:
+        return pow(a, n)
+
+
 if __name__ == '__main__':
-    print(pow(2, 0))
-    print(pow(2, 2))
+    print(main_power(2, 0))
+    print(main_power(2, 2))
+    print(main_power(4, -1))

@@ -60,8 +60,10 @@ class SinglyLinkedList:
         if self.head:
             tmp = self.head
             self.head = self.head.next
-            del tmp
             self.size -= 1
+            val = tmp.data
+            del tmp
+            return val
         else:
             print("Empty list cannot delete!")
 
