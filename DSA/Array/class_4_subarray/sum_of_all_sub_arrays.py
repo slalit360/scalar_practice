@@ -11,7 +11,7 @@ Problem Description
 Sol : (n - i) * (i + 1) * A[i]
 """
 
-
+# Contribution technique
 def sum_of_all_sub_array(A):
     # TC : O(N)
     n = len(A)

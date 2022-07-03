@@ -86,26 +86,56 @@ class SinglyLinkedList:
 
     def delete_by_value(self, data):
         if not self.head:
-            print("Empty list cannot delete!")
-        elif self.head.data == data:
-            self.delete_at_head()
-        else:
-            tmp = self.head
-            flag = 0
-            while tmp.next:
-                if tmp.next.data == data:
-                    flag = 1
-                    break
-                tmp = tmp.next
-            if flag:
+            return None
+
+        if self.head.data == data:
+            self.head = self.head.next
+            self.size -= 1
+
+        tmp = self.head
+
+        while tmp:
+            if tmp.next and tmp.next.data == data:
                 tmp.next = tmp.next.next
-                del tmp
                 self.size -= 1
+            else:
+                tmp = tmp.next
+
+        self.head = tmp
+
+    def delete_duplicates(self):
+        head = self.head
+        s = Node(0, self.head)
+        p = s
+
+        tmp = self.head
+        while tmp:
+            if tmp.next and tmp.data == tmp.next.data:
+                while tmp.next and tmp.data == tmp.next.data:
+                    tmp = tmp.next
+                p.next = tmp.next
+            else:
+                p = p.next
+            tmp = tmp.next
+
+        self.head = s.next
+
+    def get_all_unique(self):
+        head = self.head
+        if not head:
+            return head
+        tmp = head
+        while tmp:
+            if tmp.next and tmp.data == tmp.next.data:
+                tmp.next = tmp.next.next
+            else:
+                tmp = tmp.next
+        self.head = head
 
     def delete_at_idx(self, index):
         if index == 0:
             self.delete_at_head()
-        elif index == self.size-1:
+        elif index == self.size - 1:
             self.delete_at_end()
         elif index > self.size:
             print("Index is not valid so, cannot delete!")
