@@ -37,8 +37,33 @@ def print_factors_new(x):
     return f
 
 
+def get_factors_array(A):
+    maxx = max(A)
+    n = len(A)
+    # for idx in range(1, n):
+    #     if A[idx] > maxx :
+    #         maxx = A[idx]
+
+    n = maxx + 1
+    B = [0] * n
+    B[1] = 1
+
+    for i in range(2, n):
+        B[i] = 2
+
+    for k in range(2, n):
+        for j in range(k + k, n, k):
+            B[j] += 1
+    ans = []
+    for i in range(len(A)):
+        ans.append(B[A[i]])
+    return ans
+
+
 if __name__ == '__main__':
-    print(get_factors_divide_by_2(7))
+    # print(get_factors_divide_by_2(7))
     A = 4
-    print(print_factors(A))
-    print(sorted(print_factors_new(A)))
+    # print(print_factors(A))
+    # print(sorted(print_factors_new(A)))
+    print(get_factors_array([2, 3, 4, 5]))
+    print(get_factors_array([8, 9, 10]))

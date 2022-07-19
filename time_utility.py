@@ -1,8 +1,9 @@
 import functools
 from time import time
+from typing import Optional
 
 
-def timeit(repeat=1):
+def timeit(repeat: Optional[int] = 1):
     def timeit1(func):
         @functools.wraps(func)
         def wrap_func(*args, **kwargs):

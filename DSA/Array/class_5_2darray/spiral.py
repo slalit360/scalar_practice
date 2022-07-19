@@ -17,22 +17,22 @@ def generate_spiral_matrix(A):
 
     while n > 1:
 
-        for k in range(1, n):
+        for _ in range(1, n):
             M[i][j] = num
             num += 1
             j += 1
 
-        for k in range(1, n):
+        for _ in range(1, n):
             M[i][j] = num
             i += 1
             num += 1
 
-        for k in range(1, n):
+        for _ in range(1, n):
             M[i][j] = num
             j -= 1
             num += 1
 
-        for k in range(1, n):
+        for _ in range(1, n):
             M[i][j] = num
             i -= 1
             num += 1
@@ -48,11 +48,4 @@ def generate_spiral_matrix(A):
 
 
 if __name__ == '__main__':
-    a = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]
-    print(*a, sep="\n")
-    print(" ")
     print(*generate_spiral_matrix(4), sep="\n")

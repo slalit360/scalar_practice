@@ -21,7 +21,7 @@ def pow_best(a, n):
     # log2 n
     if n == 0:
         return 1
-    half = pow(a, n // 2)
+    half = pow_best(a, n // 2)
     res = half * half
     if n % 2 == 1:
         return res * a
@@ -29,11 +29,11 @@ def pow_best(a, n):
         return res
 
 
-@timeit(repeat=1)
+@timeit()
 def pow_p_best(a, n, p):
     if n == 0:
         return 1
-    half = pow(a, n // 2, p)
+    half = pow_p_best(a, n // 2, p)
     res = (half * half) % p
     if n % 2 == 1:
         return res * (a % p) % p
@@ -44,7 +44,7 @@ def pow_p_best(a, n, p):
 if __name__ == '__main__':
     a = 10
     b = 10000000
-    p = 1337
+    p = 1e9+7
     print(mod_naive(a, b, p))
     # print(mod_rec(a, b, p))
     print(pow_p_best(a, b, p))
