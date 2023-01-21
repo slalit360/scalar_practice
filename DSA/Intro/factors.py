@@ -38,13 +38,7 @@ def print_factors_new(x):
 
 
 def get_factors_array(A):
-    maxx = max(A)
-    n = len(A)
-    # for idx in range(1, n):
-    #     if A[idx] > maxx :
-    #         maxx = A[idx]
-
-    n = maxx + 1
+    n = max(A) + 1
     B = [0] * n
     B[1] = 1
 

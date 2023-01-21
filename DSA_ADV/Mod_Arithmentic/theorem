@@ -1,0 +1,20 @@
+"""
+Hello everyone, As said in the class,
+I request everyone to revise the last class (Especially the Fermat's theorem and Modulo Inverse) at least once.
+Here are some resources,
+
+Fermat's Theorem :
+
+https://www.geeksforgeeks.org/fermats-little-theorem/
+https://www.cantorsparadise.com/fermats-little-theorem-fbc88498d54e (Proof)
+
+Modulo Inverse:
+
+https://www.geeksforgeeks.org/multiplicative-inverse-under-modulo-m/
+https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/modular-inverses
+
+Resource on Modular Arithmetic:
+
+https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/what-is-modular-arithmetic
+
+"""
